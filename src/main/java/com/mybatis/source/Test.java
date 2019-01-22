@@ -11,7 +11,7 @@ public class Test {
     public static void main(String[] args)  {
         AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
         UserService userService = (UserService) annotationConfigApplicationContext.getBean("userService");
-        UserService2 userService2 = (UserService2) annotationConfigApplicationContext.getBean("userService");
+        UserService2 userService2 = (UserService2) annotationConfigApplicationContext.getBean("userService2");
         userService.query();
         userService2.query();
     }

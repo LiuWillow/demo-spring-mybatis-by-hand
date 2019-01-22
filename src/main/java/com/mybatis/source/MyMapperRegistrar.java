@@ -22,11 +22,11 @@ public class MyMapperRegistrar implements ImportBeanDefinitionRegistrar {
          * 遍历类数组，把class转换成beanDefinition注册到IOC容器中
          */
         for (Class clazz : classes) {
-            BeanDefinitionBuilder builder = BeanDefinitionBuilder.genericBeanDefinition(classes[0]);
+            BeanDefinitionBuilder builder = BeanDefinitionBuilder.genericBeanDefinition(clazz);
             GenericBeanDefinition beanDefinition = (GenericBeanDefinition) builder.getBeanDefinition();
             beanDefinition.setBeanClass(MyMapperFactoryBean.class);
             //获取构造器并注入类，这里会自动将类名转换成class
-            beanDefinition.getConstructorArgumentValues().addGenericArgumentValue(clazz.getName());
+            beanDefinition.getConstructorArgumentValues().addGenericArgumentValue(clazz);
             //Spring只认识factoryBean和beanDefinition
             //beanDefinition拥有class的所有信息，Spring可以并且只能根据beanDefinition做几乎对类的所有操作包括实例化
             //autowired就可以扫描到容器中的内容并取出使用
